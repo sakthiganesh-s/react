@@ -6,7 +6,7 @@ export default function Register({ onSwitch }) {
 
   const handleReg = async () => {
     try {
-      await axios.post('http://localhost:5000/api/register', form);
+      await axios.post('https://missing-person-finder-xobu.onrender.com/api/register', form);
       alert("Registration complete.");
       onSwitch();
     } catch {
@@ -52,4 +52,5 @@ export default function Register({ onSwitch }) {
       </div>
     </div>
   );
+
 }
