@@ -7,7 +7,7 @@ export default function PolicePortal({ user, onLogout }) {
   const [statusFilter, setStatusFilter] = useState('All');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5000/api/people');
+    const res = await axios.get('https://missing-person-finder-xobu.onrender.com/api/people');
     setPeople(res.data);
   };
 
@@ -20,13 +20,13 @@ export default function PolicePortal({ user, onLogout }) {
   });
 
   const updateStatus = async (id) => {
-    await axios.put(`http://localhost:5000/api/people/${id}`, { status: 'Found' });
+    await axios.put(`https://missing-person-finder-xobu.onrender.com/api/people/${id}`, { status: 'Found' });
     fetchData();
   };
 
   const deleteCase = async (id) => {
     if (window.confirm("Permanently delete?")) {
-      await axios.delete(`http://localhost:5000/api/people/${id}`);
+      await axios.delete(`https://missing-person-finder-xobu.onrender.com/api/people/${id}`);
       fetchData();
     }
   };
@@ -57,7 +57,7 @@ export default function PolicePortal({ user, onLogout }) {
             <div className="card p-3 h-100">
               <div className="row g-0">
                 <div className="col-4 col-sm-3">
-                  <img src={p.photo ? `http://localhost:5000/uploads/${p.photo}` : "https://via.placeholder.com/100"} 
+                  <img src={p.photo ? `https://missing-person-finder-xobu.onrender.com/uploads/${p.photo}` : "https://via.placeholder.com/100"} 
                        className="img-fluid rounded" style={{ height: '140px', objectFit: 'cover' }} alt="p" />
                 </div>
                 <div className="col-8 col-sm-9 ps-3">
