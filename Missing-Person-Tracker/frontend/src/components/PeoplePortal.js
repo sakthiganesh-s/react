@@ -8,7 +8,7 @@ export default function PeoplePortal({ user, onLogout }) {
   const [file, setFile] = useState(null);
 
   const fetchCases = async () => {
-    const res = await axios.get('http://localhost:5000/api/people');
+    const res = await axios.get('https://missing-person-finder-xobu.onrender.com/');
     setPeople(res.data);
   };
 
@@ -22,7 +22,7 @@ export default function PeoplePortal({ user, onLogout }) {
     if (file) formData.append('photo', file);
 
     try {
-      await axios.post('http://localhost:5000/api/people', formData);
+      await axios.post('https://missing-person-finder-xobu.onrender.com/', formData);
       alert("Case Reported");
       setForm({ name: '', age: '', lastSeen: '', description: '' });
       setFile(null); fetchCases(); setView('status');
@@ -69,4 +69,5 @@ export default function PeoplePortal({ user, onLogout }) {
       )}
     </div>
   );
+
 }
