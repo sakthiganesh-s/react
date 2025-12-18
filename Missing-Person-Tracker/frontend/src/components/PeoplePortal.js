@@ -8,7 +8,7 @@ export default function PeoplePortal({ user, onLogout }) {
   const [file, setFile] = useState(null);
 
   const fetchCases = async () => {
-    const res = await axios.get('https://missing-person-finder-xobu.onrender.com/');
+    const res = await axios.get('https://missing-person-finder-xobu.onrender.com/api/people');
     setPeople(res.data);
   };
 
@@ -22,7 +22,7 @@ export default function PeoplePortal({ user, onLogout }) {
     if (file) formData.append('photo', file);
 
     try {
-      await axios.post('https://missing-person-finder-xobu.onrender.com/', formData);
+      await axios.post('https://missing-person-finder-xobu.onrender.com/api/people', formData);
       alert("Case Reported");
       setForm({ name: '', age: '', lastSeen: '', description: '' });
       setFile(null); fetchCases(); setView('status');
@@ -46,7 +46,7 @@ export default function PeoplePortal({ user, onLogout }) {
           {people.map(p => (
             <div className="col-md-6 mb-3" key={p._id}>
               <div className="card p-3 d-flex flex-row align-items-center">
-                <img src={p.photo ? `http://localhost:5000/uploads/${p.photo}` : "https://via.placeholder.com/80"} 
+                <img src={p.photo ? `https://missing-person-finder-xobu.onrender.com/uploads/${p.photo}` : "https://via.placeholder.com/80"} 
                      style={{ width: '70px', height: '70px', borderRadius: '6px', objectFit: 'cover' }} alt="p" />
                 <div className="ms-3">
                   <h6 className="fw-bold mb-1">{p.name}</h6>
@@ -71,3 +71,4 @@ export default function PeoplePortal({ user, onLogout }) {
   );
 
 }
+
